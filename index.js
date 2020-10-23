@@ -4,14 +4,20 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const usersRoutes = require("./routes/users");
+const usersAddressRoutes = require("./routes/usersAddress");
+const usersContactRoutes = require("./routes/usersContact");
+const usersCredentialsRoutes = require("./routes/usersCredentials");
 
 //
-//
+//u
 //App.use
 
 // app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(usersRoutes);
+app.use(usersAddressRoutes);
+app.use(usersContactRoutes);
+app.use(usersCredentialsRoutes);
 
 //
 //
