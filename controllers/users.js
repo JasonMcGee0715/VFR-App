@@ -11,7 +11,7 @@ const list = (req, res) => {
 
 const show = (req, res) => {
   const id = req.params.id;
-  const foundUser = contacts.find((user) => user.id === Number(id));
+  const foundUser = users.find((user) => user.id === Number(id));
 
   res.json(foundUser);
 };
@@ -24,8 +24,8 @@ const create = (req, res) => {
     ...req.body,
   };
 
-  contacts.push(newUser);
+  users.push(newUser);
   res.json(newUser);
 };
 
-module.exports = [list, show, create];
+module.exports = { list, show, create };

@@ -1,16 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const comments = require("./data/comments");
 
 const app = express();
+
+const usersRoutes = require("./routes/users");
 
 //
 //
 //App.use
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(bodyParser.json());
-// app.use(contactsRoutes);
+app.use(usersRoutes);
 
 //
 //
