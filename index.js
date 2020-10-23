@@ -7,6 +7,7 @@ const usersRoutes = require("./routes/users");
 const usersAddressRoutes = require("./routes/usersAddress");
 const usersContactRoutes = require("./routes/usersContact");
 const usersCredentialsRoutes = require("./routes/usersCredentials");
+const businessesRoutes = require("./routes/businesses");
 
 //
 //u
@@ -18,6 +19,7 @@ app.use(usersRoutes);
 app.use(usersAddressRoutes);
 app.use(usersContactRoutes);
 app.use(usersCredentialsRoutes);
+app.use(businessesRoutes);
 
 //
 //
