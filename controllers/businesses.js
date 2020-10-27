@@ -25,7 +25,7 @@ const create = (req, res) => {
     ...req.body,
   };
   if (
-    !business.id ||
+    !business.businessId ||
     !business.name ||
     !business.city ||
     !business.state ||
@@ -34,7 +34,7 @@ const create = (req, res) => {
     !business.militaryDiscount
   ) {
     return res.status(400).json({
-      msg: `Please enter an id, name, city, state, chain, nationalCompany, militaryDiscount`,
+      msg: `Please enter an businessId, name, city, state, chain, nationalCompany, militaryDiscount`,
     });
   }
   businesses.push(business);

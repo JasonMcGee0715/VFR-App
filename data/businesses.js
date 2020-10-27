@@ -1,11 +1,9 @@
 module.exports = [
   {
     businessId: 1,
+    addressId: 1,
     name: "Moonies Burger House",
-    city: ["Cedar Park", "Austin"],
-    state: ["Texas"],
     chain: "Yes",
-    nationalCompany: "No",
     militaryDiscount: "10%",
   },
   {
