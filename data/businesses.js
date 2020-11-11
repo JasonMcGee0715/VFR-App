@@ -1,7 +1,6 @@
 module.exports = [
   {
     businessId: 1,
-    addressId: 1,
     name: "Moonies Burger House",
     chain: "Yes",
     militaryDiscount: "10%",
@@ -9,37 +8,25 @@ module.exports = [
   {
     businessId: 2,
     name: "Apple",
-    city: ["Austin"],
-    state: ["Texas"],
     chain: "Yes",
-    nationalCompany: "Yes",
     militaryDiscount: "10%",
   },
   {
     businessId: 3,
     name: "Snooze",
-    city: ["Austin"],
-    state: ["Texas"],
     chain: "Yes",
-    nationalCompany: "No",
     militaryDiscount: "10%",
   },
   {
     businessId: 4,
     name: "Taco Deli",
-    city: ["Austin"],
-    state: ["Texas"],
     chain: "Yes",
-    nationalCompany: "No",
     militaryDiscount: "10%",
   },
   {
     businessId: 5,
     name: "Torchys",
-    city: ["Austin"],
-    state: ["Texas"],
     chain: "Yes",
-    nationalCompany: "Yes",
     militaryDiscount: "10%",
   },
 ];
