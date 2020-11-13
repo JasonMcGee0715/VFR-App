@@ -5,6 +5,7 @@ const app = express();
 
 const usersRoutes = require("./routes/users");
 const businessesRoutes = require("./routes/businesses");
+const businessAddressesRoutes = require("./routes/businessAddresses");
 
 //
 //u
@@ -14,6 +15,7 @@ const businessesRoutes = require("./routes/businesses");
 app.use(bodyParser.json());
 app.use(usersRoutes);
 app.use(businessesRoutes);
+app.use(businessAddressesRoutes);
 
 //
 //

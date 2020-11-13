@@ -15,11 +15,11 @@ const list = (req, res) => {
 
 const show = (req, res) => {
   // SELECT USERS WHERE ID = <REQ PARAMS ID>
-  const id = req.params.id;
+  const id = req.params.businessId;
   console.log(id);
   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
   // WHAT GOES IN THE BRACKETS
-  sql = mysql.format(sql, ["*", "users", "id", id]);
+  sql = mysql.format(sql, ["*", "businesses", "businessId", id]);
 
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
@@ -28,10 +28,10 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-  let newUser = req.body;
-  let businessName = newUser.businessName;
-  let chain = newUser.chain;
-  let militaryDiscount = newUser.militaryDiscount;
+  let newBusiness = req.body;
+  let businessName = newBusiness.businessName;
+  let chain = newBusiness.chain;
+  let militaryDiscount = newBusiness.militaryDiscount;
 
   // INSERT INTO USERS FIRST AND LAST NAME
   let sql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
