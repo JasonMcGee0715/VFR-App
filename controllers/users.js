@@ -5,7 +5,7 @@ const { handleSQLError } = require("../sql/error");
 //
 //
 //// Code
-const getAllUsers = (req, res) => {
+const list = (req, res) => {
   // SELECT ALL USERS
   pool.query("SELECT * FROM users", (err, rows) => {
     if (err) return handleSQLError(res, err);
@@ -13,7 +13,7 @@ const getAllUsers = (req, res) => {
   });
 };
 
-const getUserById = (req, res) => {
+const show = (req, res) => {
   // SELECT USERS WHERE ID = <REQ PARAMS ID>
   const id = req.params.id;
   console.log(id);
@@ -27,7 +27,7 @@ const getUserById = (req, res) => {
   });
 };
 
-const createUser = (req, res) => {
+const create = (req, res) => {
   let newUser = req.body;
   let first = newUser.firstName;
   let last = newUser.lastName;
@@ -74,7 +74,7 @@ const createUser = (req, res) => {
   });
 };
 
-module.exports = { getAllUsers, getUserById, createUser };
+module.exports = { list, show, create };
 
 // const users = require("../data/users");
 // const usersCount = users.length;
