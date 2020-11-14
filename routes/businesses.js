@@ -12,7 +12,7 @@ const businessesController = require("../controllers/businesses");
 // Router Paths
 
 router.get("/businesses", businessesController.list);
-router.get("/businesses/:businessId", businessesController.show);
+router.get("/businesses/:id", businessesController.show);
 router.post("/businesses", businessesController.create);
 
 //

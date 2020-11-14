@@ -15,11 +15,67 @@ const list = (req, res) => {
 
 const show = (req, res) => {
   // SELECT USERS WHERE ID = <REQ PARAMS ID>
-  const id = req.params.businessId;
+  const id = req.params.id;
   console.log(id);
   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
   // WHAT GOES IN THE BRACKETS
-  sql = mysql.format(sql, ["*", "businesses", "businessId", id]);
+  sql = mysql.format(sql, ["*", "businesses", "id", id]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json(rows);
+  });
+};
+
+// const showByName = (req, res) => {
+//   // SELECT USERS WHERE ID = <REQ PARAMS ID>
+//   const name = selectedName;
+//   console.log(name);
+//   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
+//   // WHAT GOES IN THE BRACKETS
+//   sql = mysql.format(sql, ["*", "businesses", "name", name]);
+
+//   pool.query(sql, (err, rows) => {
+//     if (err) return handleSQLError(res, err);
+//     return res.json(rows);
+//   });
+// };
+
+// const showByZip = (req, res) => {
+//   // SELECT USERS WHERE ID = <REQ PARAMS ID>
+//   const zip = selectedZip;
+//   console.log(zip);
+//   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
+//   // WHAT GOES IN THE BRACKETS
+//   sql = mysql.format(sql, ["*", "businesses", "zip", zip]);
+
+//   pool.query(sql, (err, rows) => {
+//     if (err) return handleSQLError(res, err);
+//     return res.json(rows);
+//   });
+// };
+
+// const showByCity = (req, res) => {
+//   // SELECT USERS WHERE ID = <REQ PARAMS ID>
+//   const city = selectedCity;
+//   console.log(city);
+//   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
+//   // WHAT GOES IN THE BRACKETS
+//   sql = mysql.format(sql, ["*", "businesses", "city", city]);
+
+//   pool.query(sql, (err, rows) => {
+//     if (err) return handleSQLError(res, err);
+//     return res.json(rows);
+//   });
+// };
+
+const showByZip = (req, res) => {
+  // SELECT USERS WHERE ID = <REQ PARAMS ID>
+  const zip = selectedZip;
+  console.log(zip);
+  let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
+  // WHAT GOES IN THE BRACKETS
+  sql = mysql.format(sql, ["*", "businesses", "zip", zip]);
 
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
@@ -29,19 +85,32 @@ const show = (req, res) => {
 
 const create = (req, res) => {
   let newBusiness = req.body;
-  let businessName = newBusiness.businessName;
+  let name = newBusiness.name;
+  let address = newBusiness.address;
+  let city = newBusiness.city;
+  let state = newBusiness.state;
+  let zip = newBusiness.zip;
   let chain = newBusiness.chain;
   let militaryDiscount = newBusiness.militaryDiscount;
 
   // INSERT INTO USERS FIRST AND LAST NAME
-  let sql = "INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)";
+  let sql =
+    "INSERT INTO ?? (??, ??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?, ?)";
   // WHAT GOES IN THE BRACKETS???
   sql = mysql.format(sql, [
     "businesses",
-    "businessName",
+    "name",
+    "address",
+    "city",
+    "state",
+    "zip",
     "chain",
     "militaryDiscount",
-    `${businessName}`,
+    `${name}`,
+    `${address}`,
+    `${city}`,
+    `${state}`,
+    `${zip}`,
     `${chain}`,
     `${militaryDiscount}`,
   ]);
