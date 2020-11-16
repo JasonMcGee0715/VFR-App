@@ -1,0 +1,26 @@
+.header {
+  background-color: #49a4d1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 100px 0px 100px;
+  -webkit-box-shadow: 0 10px 10px -6px #777;
+  -moz-box-shadow: 0 10px 10px -6px #777;
+  box-shadow: 0 10px 10px -6px #777;
+}
+.title {
+  font-family: "Stardos Stencil", cursive;
+  font-size: 3.2rem;
+  padding: 0px;
+}
+.list {
+  display: flex;
+}
+.list li {
+  display: flex;
+  padding: 32px;
+  font-size: 1.3rem;
+}
+.list li:hover {
+  text-decoration: underline;
+}

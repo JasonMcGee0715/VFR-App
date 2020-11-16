@@ -1,8 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import "../Header/Header.css";
+// import { makeStyles } from "@material-ui/core/styles";
 // import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Fade, Typography, Paper } from "@material-ui/core";
-import App from "../../App";
+// import { AppBar, Toolbar, Fade, Typography, Paper } from "@material-ui/core";
+// import App from "../../App";
 // import { checkAuth } from "../../checkAuth";
 
 // const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,22 @@ import App from "../../App";
 export default function Header() {
   return (
     <>
-      <AppBar>
+      {/* <AppBar>
         <Toolbar>
           <Typography>Hello</Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+      <div className="header">
+        <h1 className="title">Weeble</h1>
+        <nav>
+          <ul className="list">
+            <li>How it Works</li>
+            <li>Search</li>
+            <li>Add Business</li>
+            <li>Logout</li>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 }

@@ -1,0 +1,24 @@
+.body {
+  padding: 50px 350px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  width: 75%;
+  padding: 20px;
+}
+/* .button {
+  margin-top: 16px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  background-color: #cc2936;
+  border: none;
+  border-radius: 3px;
+  color: whitesmoke;
+} */
+.login-button {
+  margin-top: 1rem !important;
+  background-color: #49a4d1;
+}
