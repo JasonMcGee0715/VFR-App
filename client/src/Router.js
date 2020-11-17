@@ -4,6 +4,7 @@ import cookie from "cookie";
 import Login from "./components/Login";
 import GettingStarted from "./components/GettingStarted";
 import SignUp from "./components/SignUp";
+import NewBusiness from "./components/NewBusiness";
 // import Car from './components/Car'
 // import Login from './components/Login'
 
@@ -40,6 +41,7 @@ const Router = () => {
       <Route exact path="/" component={GettingStarted} />
       <Route path="/login" component={Login} />
       <Route path="/signUp" component={SignUp} />
+      <Route path="/newbusiness" component={NewBusiness} />
       {/* <ProtectedRoute exact path="/" component={Home} /> */}
       {/* <ProtectedRoute path="/about" component={About} />
             <ProtectedRoute path="/car/:id" component={Car} /> */}

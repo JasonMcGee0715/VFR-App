@@ -2,20 +2,20 @@ import React from "react";
 import "../GettingStarted/GettingStarted.css";
 import { Link } from "react-router-dom";
 import {
-  Typography,
-  Box,
-  Grid,
-  Card,
-  CardMedia,
-  Paper,
-  Container,
-  List,
-  ListItem,
-  TextField,
+  // Typography,
+  // Box,
+  // Grid,
+  // Card,
+  // CardMedia,
+  // Paper,
+  // Container,
+  // List,
+  // ListItem,
+  // TextField,
   Button,
-  CardActionArea,
+  // CardActionArea,
 } from "@material-ui/core";
-import Image from "material-ui-image";
+// import Image from "material-ui-image";
 
 export default function GettingStarted() {
   return (

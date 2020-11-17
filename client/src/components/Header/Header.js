@@ -42,7 +42,9 @@ export default function Header() {
               <Link to="/">Getting Started</Link>
             </li>
             <li>Search</li>
-            <li>Add Business</li>
+            <li>
+              <Link to="/addbusiness">Add Business</Link>
+            </li>
             {checkAuth() ? <li>Logout</li> : <li>Login</li>}
           </ul>
         </nav>
