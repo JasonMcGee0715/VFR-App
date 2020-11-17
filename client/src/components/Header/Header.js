@@ -1,5 +1,7 @@
 import React from "react";
 import "../Header/Header.css";
+import { Link } from "react-router-dom";
+import { checkAuth } from "../../checkAuth";
 // import { makeStyles } from "@material-ui/core/styles";
 // import { Link } from "react-router-dom";
 // import { AppBar, Toolbar, Fade, Typography, Paper } from "@material-ui/core";
@@ -36,10 +38,12 @@ export default function Header() {
         <h1 className="title">Weeble.</h1>
         <nav>
           <ul className="list">
-            <li>Getting Started</li>
+            <li>
+              <Link to="/">Getting Started</Link>
+            </li>
             <li>Search</li>
             <li>Add Business</li>
-            <li>Logout</li>
+            {checkAuth() ? <li>Logout</li> : <li>Login</li>}
           </ul>
         </nav>
       </div>

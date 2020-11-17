@@ -1,6 +1,7 @@
 import React from "react";
 import "../Login/Login.css";
 import { TextField, Button, Container } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -13,7 +14,6 @@ export default function Login() {
             // onChange={handleTextChange}
             name="userName"
             placeholder="Username"
-            // placeholder="Username"
             type="text"
           />
           <TextField
@@ -21,10 +21,9 @@ export default function Login() {
             // onChange={handleTextChange}
             name="password"
             placeholder="Password"
-            // placeholder="Password"
             type="password"
+            style={{ marginTop: 15 }}
           />
-          {/* <button className="button">Login</button> */}
           <div className="buttons">
             <Button
               type="submit"
@@ -40,7 +39,7 @@ export default function Login() {
               variant="contained"
               style={{ background: "#E84855", color: "whitesmoke" }}
             >
-              Sign Up
+              <Link to="/signUp">Signup</Link>
             </Button>
           </div>
         </form>

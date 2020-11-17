@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../SignUp/SignUp.css";
 import { TextField, Button, Container } from "@material-ui/core";
 
@@ -13,6 +13,19 @@ export default function SignUp() {
   const [email, setEmail] = useState(null);
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
+
+  const newUser = {
+    firstName: firstName,
+    lastName: lastName,
+    city: city,
+    state: state,
+    county: county,
+    zip: zip,
+    phone: phone,
+    email: email,
+    userName: userName,
+    password: password,
+  };
 
   const handleTextChange = (evt) => {
     if (evt.target.name === "firstName") {
@@ -47,44 +60,36 @@ export default function SignUp() {
     }
   };
 
-  const newUser = {
-    firstName: firstName,
-    lastName: lastName,
-    city: city,
-    state: state,
-    county: county,
-    zip: zip,
-    phone: phone,
-    email: email,
-    userName: userName,
-    password: password,
-  };
-
-  const handleSubmit = () => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
     console.log(newUser);
   };
+  // useEffect(() => {
+  //   // console.log(Clear);
+  //   console.log(newUser);
+  // });
 
-  // let textInput1 = useRef(null);
-  // let textInput2 = useRef(null);
-  // let textInput3 = useRef(null);
-  // let textInput4 = useRef(null);
-  // let textInput5 = useRef(null);
-  // let textInput6 = useRef(null);
-  // let textInput7 = useRef(null);
-  // let textInput8 = useRef(null);
-  // let textInput9 = useRef(null);
-  // let textInput10 = useRef(null);
+  let textInput1 = useRef(null);
+  let textInput2 = useRef(null);
+  let textInput3 = useRef(null);
+  let textInput4 = useRef(null);
+  let textInput5 = useRef(null);
+  let textInput6 = useRef(null);
+  let textInput7 = useRef(null);
+  let textInput8 = useRef(null);
+  let textInput9 = useRef(null);
+  let textInput10 = useRef(null);
 
   return (
     <div>
       <Container maxWidth="xs" className="signUpContainer">
-        <form className="signUpForm">
+        <form className="signUpForm" onSubmit={handleSubmit}>
           <TextField
             className="signUpInput"
             // autoFocus= "true"
             required
             onChange={handleTextChange}
-            // inputRef={textInput1}
+            inputRef={textInput1}
             name="firstName"
             placeholder="First Name"
             type="text"
@@ -93,7 +98,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput2}
+            inputRef={textInput2}
             name="lastName"
             placeholder="Last Name"
             type="text"
@@ -103,7 +108,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput3}
+            inputRef={textInput3}
             name="city"
             placeholder="City"
             type="text"
@@ -113,7 +118,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput4}
+            inputRef={textInput4}
             name="state"
             placeholder="State"
             type="text"
@@ -123,7 +128,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput5}
+            inputRef={textInput5}
             name="county"
             placeholder="County"
             type="text"
@@ -133,7 +138,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput6}
+            inputRef={textInput6}
             name="zip"
             placeholder="Zip"
             type="text"
@@ -143,7 +148,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput7}
+            inputRef={textInput7}
             name="phone"
             placeholder="Phone"
             type="text"
@@ -153,7 +158,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput8}
+            inputRef={textInput8}
             name="email"
             placeholder="Email"
             type="text"
@@ -163,7 +168,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput9}
+            inputRef={textInput9}
             name="userName"
             placeholder="User Name"
             type="text"
@@ -173,7 +178,7 @@ export default function SignUp() {
             className="signUpInput"
             required
             onChange={handleTextChange}
-            // inputRef={textInput10}
+            inputRef={textInput10}
             name="password"
             placeholder="Password"
             type="password"
@@ -185,21 +190,20 @@ export default function SignUp() {
               className="createUser-button"
               variant="contained"
               style={{ background: "#E84855", color: "whitesmoke" }}
-              onClick={handleSubmit}
-              // onClick={() => {
-              //   setTimeout(() => {
-              //     textInput1.current.value = "";
-              //     textInput2.current.value = "";
-              //     textInput3.current.value = "";
-              //     textInput4.current.value = "";
-              //     textInput5.current.value = "";
-              //     textInput6.current.value = "";
-              //     textInput7.current.value = "";
-              //     textInput8.current.value = "";
-              //     textInput9.current.value = "";
-              //     textInput10.current.value = "";
-              //   }, 100);
-              // }}
+              onClick={() => {
+                setTimeout(() => {
+                  textInput1.current.value = "";
+                  textInput2.current.value = "";
+                  textInput3.current.value = "";
+                  textInput4.current.value = "";
+                  textInput5.current.value = "";
+                  textInput6.current.value = "";
+                  textInput7.current.value = "";
+                  textInput8.current.value = "";
+                  textInput9.current.value = "";
+                  textInput10.current.value = "";
+                }, 100);
+              }}
             >
               Create New User
             </Button>
