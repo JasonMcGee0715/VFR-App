@@ -8,10 +8,11 @@ export default function Login() {
       <Container maxWidth="sm">
         <form className="login-form">
           <TextField
+            autoFocus="true"
             required
             // onChange={handleTextChange}
             name="userName"
-            label="Username"
+            placeholder="Username"
             // placeholder="Username"
             type="text"
           />
@@ -19,19 +20,29 @@ export default function Login() {
             required
             // onChange={handleTextChange}
             name="password"
-            label="Password"
+            placeholder="Password"
             // placeholder="Password"
             type="password"
           />
           {/* <button className="button">Login</button> */}
-          <Button
-            type="submit"
-            className="login-button"
-            variant="contained"
-            style={{ background: "#E84855", color: "whitesmoke" }}
-          >
-            Login
-          </Button>
+          <div className="buttons">
+            <Button
+              type="submit"
+              className="login-button"
+              variant="contained"
+              style={{ background: "#E84855", color: "whitesmoke" }}
+            >
+              Login
+            </Button>
+            <Button
+              type="submit"
+              className="login-button"
+              variant="contained"
+              style={{ background: "#E84855", color: "whitesmoke" }}
+            >
+              Sign Up
+            </Button>
+          </div>
         </form>
       </Container>
     </div>

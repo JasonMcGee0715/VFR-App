@@ -33,10 +33,10 @@ export default function Header() {
         </Toolbar>
       </AppBar> */}
       <div className="header">
-        <h1 className="title">Weeble</h1>
+        <h1 className="title">Weeble.</h1>
         <nav>
           <ul className="list">
-            <li>How it Works</li>
+            <li>Getting Started</li>
             <li>Search</li>
             <li>Add Business</li>
             <li>Logout</li>

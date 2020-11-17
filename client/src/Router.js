@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import cookie from "cookie";
 import Login from "./components/Login";
-// import About from './components/About'
+import GettingStarted from "./components/GettingStarted";
 // import Car from './components/Car'
 // import Login from './components/Login'
 
@@ -36,6 +36,7 @@ const checkAuth = () => {
 const Router = () => {
   return (
     <Switch>
+      <Route exact path="/" component={GettingStarted} />
       <Route path="/login" component={Login} />
       {/* <ProtectedRoute exact path="/" component={Home} /> */}
       {/* <ProtectedRoute path="/about" component={About} />
