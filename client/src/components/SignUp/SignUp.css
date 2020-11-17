@@ -1,0 +1,15 @@
+.signUpContainer {
+  padding-top: 100px;
+}
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+}
+.newUserButton {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.createUser-button {
+  width: 200px;
+}

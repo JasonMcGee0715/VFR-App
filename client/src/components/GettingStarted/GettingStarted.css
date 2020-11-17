@@ -27,6 +27,12 @@
 .intro-button {
   margin-top: 1rem !important;
   width: 30%;
+  /* transform: scale(1);
+  transition: transform ease-out 0.5s; */
+}
+.intro-button:hover {
+  /* box-shadow: 10px 10px 10px -6px #777; */
+  /* transform: scale(2); */
 }
 a {
   color: #fbf7ef;
