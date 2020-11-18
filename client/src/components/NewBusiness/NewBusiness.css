@@ -1,0 +1,15 @@
+.newBusinessContainer {
+  padding-top: 100px;
+}
+.newBusinessForm {
+  display: flex;
+  flex-direction: column;
+}
+.newBusinessButton {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.createBusiness-button {
+  width: 200px;
+}

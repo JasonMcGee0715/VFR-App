@@ -29,7 +29,7 @@ export default function Login() {
               type="submit"
               className="login-button"
               variant="contained"
-              style={{ background: "#E84855", color: "whitesmoke" }}
+              style={{ background: "#E84855", color: "#fbf7ef" }}
             >
               Login
             </Button>
@@ -37,7 +37,7 @@ export default function Login() {
               type="submit"
               className="login-button"
               variant="contained"
-              style={{ background: "#E84855", color: "whitesmoke" }}
+              style={{ background: "#E84855", color: "#fbf7ef" }}
             >
               <Link to="/signUp">Signup</Link>
             </Button>

@@ -43,7 +43,7 @@ export default function Header() {
             </li>
             <li>Search</li>
             <li>
-              <Link to="/addbusiness">Add Business</Link>
+              <Link to="/newbusiness">Add Business</Link>
             </li>
             {checkAuth() ? <li>Logout</li> : <li>Login</li>}
           </ul>
