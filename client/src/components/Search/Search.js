@@ -9,6 +9,15 @@ import {
   // Card,
   // CardMedia,
 } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
 
 export default function Search() {
   const [businesses, setBusinesses] = useState([]);
@@ -85,8 +94,22 @@ export default function Search() {
   let textInput2 = useRef(null);
   let textInput3 = useRef(null);
 
+  //
+  //// Code used to make table function with pages and rows
+  // const classes = useStyles();
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
-    <React.Fragment>
+    <div>
       <div className="mainContainer">
         <span
           style={{ textAlign: "center", fontSize: "26px", color: "#141313" }}
@@ -185,18 +208,67 @@ export default function Search() {
             </Button>
           </form>
         </div>
-        <div className="showBusinessContainer">
-          {dataPool.map((business, idx) => (
-            <h2 key={idx}>{business.name}</h2>
-          ))}
+        <div className="showBusinessAndMap">
+          <div className="showBusiness">
+            <Paper>
+              <TableContainer>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell align="left">Name</TableCell>
+                      <TableCell align="left">Address</TableCell>
+                      <TableCell align="left">City</TableCell>
+                      <TableCell align="left">State</TableCell>
+                      <TableCell align="left">Zip</TableCell>
+                      <TableCell align="left">Chain</TableCell>
+                      <TableCell align="left">Military Discount</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {dataPool
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((business) => {
+                        return (
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            // key={row.code}
+                          >
+                            <TableCell align="left">{business.name}</TableCell>
+                            <TableCell align="left">
+                              {business.address}
+                            </TableCell>
+                            <TableCell align="left">{business.city}</TableCell>
+                            <TableCell align="left">{business.state}</TableCell>
+                            <TableCell align="left">{business.zip}</TableCell>
+                            <TableCell align="left">{business.chain}</TableCell>
+                            <TableCell align="left">
+                              {business.militaryDiscount}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 100]}
+              component="div"
+              count={dataPool.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+            />
+          </div>
+          <div className="showMap"></div>
         </div>
       </div>
-    </React.Fragment>
-
-    // <div>
-    //   {businesses.map((business, idx) => (
-    //     <h2 key={idx}>{business.name}</h2>
-    //   ))}
-    // </div>
+    </div>
   );
 }

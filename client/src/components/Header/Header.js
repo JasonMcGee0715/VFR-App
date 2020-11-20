@@ -47,7 +47,13 @@ export default function Header() {
             <li>
               <Link to="/newbusiness">Add Business</Link>
             </li>
-            {checkAuth() ? <li>Logout</li> : <li>Login</li>}
+            {checkAuth() ? (
+              <li>Logout</li>
+            ) : (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
