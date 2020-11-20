@@ -10,6 +10,21 @@ export default function NewBusiness() {
   const [zip, setZip] = useState(null);
   const [chain, setChain] = useState(null);
   const [militaryDiscount, setMilitaryDiscount] = useState(null);
+  //   const [form, setForm] = useState({
+  //     firstName: '',
+  //     lastName: '',
+  //     city: '',
+  //     state: '',
+  //     zip: '',
+  //     county: '',
+  //     phone: '',
+  //   })
+
+  //   const handleTextChange = (evt) => {
+  //     const newState = form;
+  //     newState[evt.target.name] = evt.target.value;
+  //     setForm(newState);
+  //   };
 
   const newBusiness = {
     firstName: name,

@@ -69,19 +69,19 @@ const show = (req, res) => {
 //   });
 // };
 
-const showByZip = (req, res) => {
-  // SELECT USERS WHERE ID = <REQ PARAMS ID>
-  const zip = selectedZip;
-  console.log(zip);
-  let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
-  // WHAT GOES IN THE BRACKETS
-  sql = mysql.format(sql, ["*", "businesses", "zip", zip]);
+// const showByZip = (req, res) => {
+//   // SELECT USERS WHERE ID = <REQ PARAMS ID>
+//   const zip = selectedZip;
+//   console.log(zip);
+//   let sql = `SELECT ?? FROM ?? WHERE ?? = ?`;
+//   // WHAT GOES IN THE BRACKETS
+//   sql = mysql.format(sql, ["*", "businesses", "zip", zip]);
 
-  pool.query(sql, (err, rows) => {
-    if (err) return handleSQLError(res, err);
-    return res.json(rows);
-  });
-};
+//   pool.query(sql, (err, rows) => {
+//     if (err) return handleSQLError(res, err);
+//     return res.json(rows);
+//   });
+// };
 
 const create = (req, res) => {
   let newBusiness = req.body;

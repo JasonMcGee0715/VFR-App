@@ -41,7 +41,9 @@ export default function Header() {
             <li>
               <Link to="/">Getting Started</Link>
             </li>
-            <li>Search</li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
             <li>
               <Link to="/newbusiness">Add Business</Link>
             </li>

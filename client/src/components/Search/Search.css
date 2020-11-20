@@ -1,0 +1,21 @@
+.mainContainer {
+  padding: 50px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.searchContainer {
+  /* padding-top: 20px; */
+  display: flex;
+  justify-content: center;
+}
+.inputAndButton {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding: 20px;
+}
+.searchButton {
+  width: 200px;
+  /* background-color: #141313; */
+}
