@@ -18,6 +18,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
+import Geocode from "react-geocode";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 export default function Search() {
   const [businesses, setBusinesses] = useState([]);
@@ -25,6 +27,7 @@ export default function Search() {
   const [zipInput, setZipInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [dataPool, setDataPool] = useState([]);
+  const [selectedBusiness, setSelectedBusiness] = React.useState(null);
 
   //
   //// Use useEffect to call the function that will fetch data from backend and set state with response.  Now we have access to all our businesses and can filter through them as needed.
@@ -44,6 +47,7 @@ export default function Search() {
     }
     return body;
   };
+
   //
   //// Capitalize the first letter of the string so it matches with the Database
   const capitalize = (word) => {
@@ -107,6 +111,52 @@ export default function Search() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  ////// Map Styles and Info
+  const mapStyles = {
+    height: "52vh",
+    width: "90%",
+  };
+  const defaultCenter = {
+    // lat: Number(lat),
+    // lng: Number(lng),
+  };
+
+  //
+  //// GeoCoding API from Google.  Takes address and returns lat and lng coordinates.
+  // Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
+  // console.log(process.env.REACT_APP_GEOCODE_API_KEY);
+
+  // Geocode.fromAddress(address).then(
+  //   (response) => {
+  //     const { lat, lng } = response.results[0].geometry.location;
+  //     console.log(lat, lng);
+  //     setLat(lat);
+  //     setLng(lng);
+  //   },
+  //   (error) => {
+  //     console.error(error);
+  //   }
+  // );
+
+  // const handleGeo = () => {
+  //   let nameAndCoords = [];
+  //   businesses.map((business) => {
+  //     Geocode.fromAddress(business.address).then(
+  //       (response) => {
+  //         const { lat, lng } = response.results[0].geometry.location;
+  //         console.log(lat, lng);
+  //         // setLat(lat);
+  //         // setLng(lng);
+  //       },
+  //       (error) => {
+  //         console.error(error);
+  //       }
+  //     );
+  //   });
+  // };
+  const googleAPIKEY = process.env.GOOGLE_MAPS_API_KEY;
+  Geocode.setApiKey(googleAPIKEY);
 
   return (
     <div>
@@ -266,9 +316,45 @@ export default function Search() {
               onChangeRowsPerPage={handleChangeRowsPerPage}
             />
           </div>
-          <div className="showMap"></div>
+          <div className="showMap">
+            <LoadScript googleMapsApiKey="AIzaSyC8r2IDLhUdDgjAinNaflgkyQTxZO2Ne - k">
+              <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={15}
+                center={defaultCenter}
+              >
+                {businesses.map((business) => {
+                  // Geocode.setApiKey(googleAPIKEY);
+                  Geocode.fromAddress(business.address).then(
+                    (response) => {
+                      const {
+                        lat,
+                        lng,
+                      } = response.results[0].geometry.location;
+                      console.log(lat, lng);
+                    },
+                    (error) => {
+                      console.error(error);
+                    }
+                  );
+                })}
+              </GoogleMap>
+            </LoadScript>
+          </div>
         </div>
       </div>
     </div>
   );
+  // <Marker
+  //                 //   key={props.business.id}
+  //                 position={
+  //                   {
+  //                     // lat: Number(lat),
+  //                     // lng: Number(lng),
+  //                   }
+  //                 }
+  //                 onClick={() => {
+  //                   setSelectedBusiness(selectedBusiness);
+  //                 }}
+  //               />
 }
