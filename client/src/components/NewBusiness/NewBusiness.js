@@ -1,15 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../NewBusiness/NewBusiness.css";
 import { TextField, Button, Container, Typography } from "@material-ui/core";
 
 export default function NewBusiness() {
-  const [name, setName] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [city, setCity] = useState(null);
-  const [state, setState] = useState(null);
-  const [zip, setZip] = useState(null);
-  const [chain, setChain] = useState(null);
-  const [militaryDiscount, setMilitaryDiscount] = useState(null);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [chain, setChain] = useState("");
+  const [militaryDiscount, setMilitaryDiscount] = useState("");
+  // const [businesses, setBusinesses] = useState([]);
   //   const [form, setForm] = useState({
   //     firstName: '',
   //     lastName: '',
@@ -26,15 +27,19 @@ export default function NewBusiness() {
   //     setForm(newState);
   //   };
 
-  const newBusiness = {
-    firstName: name,
-    lastName: address,
-    city: city,
-    state: state,
-    zip: zip,
-    county: chain,
-    phone: militaryDiscount,
-  };
+  // useEffect(() => {
+  //   console.log(typeof name);
+  // }, []);
+
+  // const newBusiness = {
+  //   name: name,
+  //   address: address,
+  //   city: city,
+  //   state: state,
+  //   zip: zip,
+  //   chain: chain,
+  //   militaryDiscount: militaryDiscount,
+  // };
 
   const handleTextChange = (evt) => {
     if (evt.target.name === "name") {
@@ -61,8 +66,46 @@ export default function NewBusiness() {
   };
 
   const handleSubmit = (evt) => {
+    console.log(typeof name);
     evt.preventDefault();
-    console.log(newBusiness);
+
+    (async () => {
+      const rawResponse = await fetch("/businesses", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          address: address,
+          city: city,
+          state: state,
+          zip: zip,
+          county: chain,
+          phone: militaryDiscount,
+        }),
+      });
+      const content = await rawResponse.json();
+      console.log(content);
+    })();
+
+    // fetch("/businesses", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: name,
+    //     address: address,
+    //     city: city,
+    //     state: state,
+    //     zip: zip,
+    //     county: chain,
+    //     phone: militaryDiscount,
+    //   }),
+    // });
   };
 
   let textInput1 = useRef(null);

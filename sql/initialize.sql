@@ -1,6 +1,6 @@
--- DROP TABLE IF EXISTS users,
--- businesses,
--- businessAddresses;
+DROP TABLE IF EXISTS users,
+businesses;
+
 
 CREATE TABLE users (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
@@ -9,22 +9,22 @@ CREATE TABLE users (
   city VARCHAR(25) NOT NULL,
   state VARCHAR(25) NOT NULL,
   county VARCHAR(25) NOT NULL,
-  zip VARCHAR(5) NOT NULL,
-  phone VARCHAR(10) NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  zip VARCHAR(25) NOT NULL,
+  phone VARCHAR(25) NOT NULL,
+  email VARCHAR(25) NOT NULL,
   userName VARCHAR(25) NOT NULL UNIQUE,
   password VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE businesses (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
-  name VARCHAR(50) NOT NULL,
-  address VARCHAR(50) NOT NULL,
-  city VARCHAR(50) NOT NULL,
-  state VARCHAR(50) NOT NULL,
-  zip VARCHAR(5) NOT NULL,
+  name VARCHAR(25) NOT NULL,
+  address VARCHAR(25) NOT NULL,
+  city VARCHAR(25) NOT NULL,
+  state VARCHAR(25) NOT NULL,
+  zip VARCHAR(25) NOT NULL,
   chain VARCHAR(25) NOT NULL,
-  militaryDiscount VARCHAR(3) NOT NULL
+  militaryDiscount VARCHAR(25) NOT NULL
 );
 
 -- CREATE TABLE businessAddresses (

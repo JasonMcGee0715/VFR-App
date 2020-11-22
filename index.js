@@ -13,6 +13,7 @@ const businessAddressesRoutes = require("./routes/businessAddresses");
 
 // app.use(express.static("public"));
 app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(usersRoutes);
 app.use(businessesRoutes);
 app.use(businessAddressesRoutes);
