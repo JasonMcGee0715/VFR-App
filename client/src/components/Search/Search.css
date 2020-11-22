@@ -25,3 +25,9 @@
   padding-top: 30px;
   grid-gap: 30px;
 }
+.showBusiness {
+  /* border-radius: 200px; */
+}
+.showMap {
+  border-radius: 200px;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Map from "../Map";
 import "../Search/Search.css";
 import {
   TextField,
@@ -19,7 +20,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Geocode from "react-geocode";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 export default function Search() {
   const [businesses, setBusinesses] = useState([]);
@@ -27,7 +27,10 @@ export default function Search() {
   const [zipInput, setZipInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [dataPool, setDataPool] = useState([]);
-  const [selectedBusiness, setSelectedBusiness] = React.useState(null);
+  const [selectedBusiness, setSelectedBusiness] = useState();
+  const [selectedAddress, setSelectedAddress] = useState("");
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
 
   //
   //// Use useEffect to call the function that will fetch data from backend and set state with response.  Now we have access to all our businesses and can filter through them as needed.
@@ -35,7 +38,7 @@ export default function Search() {
     callBackendAPI()
       .then((res) => setBusinesses(res))
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   const callBackendAPI = async () => {
@@ -105,58 +108,41 @@ export default function Search() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
+    // event.preventDefault();
     setPage(newPage);
   };
   const handleChangeRowsPerPage = (event) => {
+    // event.preventDefault();
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
 
-  ////// Map Styles and Info
-  const mapStyles = {
-    height: "52vh",
-    width: "90%",
+  const handleMarker = (idx) => {
+    console.log(idx);
+    const business = dataPool[Number(idx)];
+    setSelectedBusiness(business);
+    console.log(selectedBusiness);
+
+    const markerAddress = business.address;
+    setSelectedAddress(markerAddress);
+    console.log(selectedAddress);
   };
-  const defaultCenter = {
-    // lat: Number(lat),
-    // lng: Number(lng),
-  };
 
-  //
-  //// GeoCoding API from Google.  Takes address and returns lat and lng coordinates.
-  // Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
-  // console.log(process.env.REACT_APP_GEOCODE_API_KEY);
-
-  // Geocode.fromAddress(address).then(
-  //   (response) => {
-  //     const { lat, lng } = response.results[0].geometry.location;
-  //     console.log(lat, lng);
-  //     setLat(lat);
-  //     setLng(lng);
-  //   },
-  //   (error) => {
-  //     console.error(error);
-  //   }
-  // );
-
-  // const handleGeo = () => {
-  //   let nameAndCoords = [];
-  //   businesses.map((business) => {
-  //     Geocode.fromAddress(business.address).then(
-  //       (response) => {
-  //         const { lat, lng } = response.results[0].geometry.location;
-  //         console.log(lat, lng);
-  //         // setLat(lat);
-  //         // setLng(lng);
-  //       },
-  //       (error) => {
-  //         console.error(error);
-  //       }
-  //     );
-  //   });
-  // };
-  const googleAPIKEY = process.env.GOOGLE_MAPS_API_KEY;
-  Geocode.setApiKey(googleAPIKEY);
+  // Map GeoCoding
+  const GOOGLE_MAPS_API_KEY = "AIzaSyC8r2IDLhUdDgjAinNaflgkyQTxZO2Ne - k";
+  Geocode.setApiKey(GOOGLE_MAPS_API_KEY);
+  Geocode.fromAddress(selectedAddress).then(
+    (response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      console.log(lat, lng);
+      setLat(lat);
+      setLng(lng);
+      // console.log(response);
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
 
   return (
     <div>
@@ -185,6 +171,8 @@ export default function Search() {
                 background: "#E84855",
                 color: "#fbf7ef",
                 marginTop: "15px",
+                width: "65%",
+                left: "16%",
               }}
               onClick={() => {
                 setTimeout(() => {
@@ -215,6 +203,8 @@ export default function Search() {
                 background: "#E84855",
                 color: "#fbf7ef",
                 marginTop: "15px",
+                width: "65%",
+                left: "16%",
               }}
               onClick={() => {
                 setTimeout(() => {
@@ -245,6 +235,8 @@ export default function Search() {
                 background: "#E84855",
                 color: "#fbf7ef",
                 marginTop: "15px",
+                width: "65%",
+                left: "16%",
               }}
               onClick={() => {
                 setTimeout(() => {
@@ -261,7 +253,7 @@ export default function Search() {
         <div className="showBusinessAndMap">
           <div className="showBusiness">
             <Paper>
-              <TableContainer>
+              <TableContainer style={{ height: 470 }}>
                 <Table stickyHeader aria-label="sticky table">
                   <TableHead>
                     <TableRow>
@@ -280,12 +272,15 @@ export default function Search() {
                         page * rowsPerPage,
                         page * rowsPerPage + rowsPerPage
                       )
-                      .map((business) => {
+                      .map((business, idx) => {
                         return (
                           <TableRow
+                            key={idx}
                             hover
                             role="checkbox"
                             tabIndex={-1}
+                            onClick={(index) => handleMarker(idx, index)}
+
                             // key={row.code}
                           >
                             <TableCell align="left">{business.name}</TableCell>
@@ -317,44 +312,10 @@ export default function Search() {
             />
           </div>
           <div className="showMap">
-            <LoadScript googleMapsApiKey="AIzaSyC8r2IDLhUdDgjAinNaflgkyQTxZO2Ne - k">
-              <GoogleMap
-                mapContainerStyle={mapStyles}
-                zoom={15}
-                center={defaultCenter}
-              >
-                {businesses.map((business) => {
-                  // Geocode.setApiKey(googleAPIKEY);
-                  Geocode.fromAddress(business.address).then(
-                    (response) => {
-                      const {
-                        lat,
-                        lng,
-                      } = response.results[0].geometry.location;
-                      console.log(lat, lng);
-                    },
-                    (error) => {
-                      console.error(error);
-                    }
-                  );
-                })}
-              </GoogleMap>
-            </LoadScript>
+            <Map lat={lat} lng={lng} />
           </div>
         </div>
       </div>
     </div>
   );
-  // <Marker
-  //                 //   key={props.business.id}
-  //                 position={
-  //                   {
-  //                     // lat: Number(lat),
-  //                     // lng: Number(lng),
-  //                   }
-  //                 }
-  //                 onClick={() => {
-  //                   setSelectedBusiness(selectedBusiness);
-  //                 }}
-  //               />
 }
