@@ -5,7 +5,7 @@
   justify-content: center;
 }
 .searchContainer {
-  /* padding-top: 20px; */
+  padding-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -21,13 +21,17 @@
 }
 .showBusinessAndMap {
   display: grid;
-  grid-template-columns: 50% 50%;
-  padding-top: 30px;
-  grid-gap: 30px;
+  /* grid-template-columns: 50% 50%; */
+  grid-template-columns: 48% 4% 48%;
+  padding-top: 50px;
+  /* grid-gap: 30px; */
 }
 .showBusiness {
-  /* border-radius: 200px; */
+  grid-column: 0 / 1;
 }
 .showMap {
-  border-radius: 200px;
+  grid-column: 3 / 4;
+  border-radius: 3px;
+  /* perspective: 1px; */
+  overflow: hidden;
 }

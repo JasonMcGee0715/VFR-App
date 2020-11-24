@@ -29,11 +29,6 @@ import { checkAuth } from "../../checkAuth";
 export default function Header() {
   return (
     <>
-      {/* <AppBar>
-        <Toolbar>
-          <Typography>Hello</Typography>
-        </Toolbar>
-      </AppBar> */}
       <div className="header">
         <h1 className="title">Weeble.</h1>
         <nav>
@@ -44,11 +39,20 @@ export default function Header() {
             <li>
               <Link to="/search">Search</Link>
             </li>
-            <li>
-              <Link to="/newbusiness">Add Business</Link>
-            </li>
+            {checkAuth() && (
+              <li>
+                <Link to="/newbusiness">Add Business</Link>
+              </li>
+            )}
             {checkAuth() ? (
-              <li>Logout</li>
+              <li
+                onClick={() => {
+                  document.cookie = "loggedIn=";
+                  window.location.replace("/login");
+                }}
+              >
+                Logout
+              </li>
             ) : (
               <li>
                 <Link to="/login">Login</Link>

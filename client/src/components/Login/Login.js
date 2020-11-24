@@ -25,16 +25,20 @@ export default function Login() {
     return body;
   };
 
-  // const usersLog = () => {
-  //   console.log(users);
-  // };
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    document.cookie = "loggedIn = true; max-age = 60*1000";
+    // props.userLogin(userName);
+    // props.history.push("/");
+    window.location.replace("/");
+  };
 
   return (
     <div className="body">
       <Container maxWidth="sm">
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <TextField
-            autoFocus="true"
+            // autoFocus="true"
             required
             // onChange={handleTextChange}
             name="userName"

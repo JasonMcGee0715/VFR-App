@@ -53,29 +53,44 @@ export default function Search() {
 
   //
   //// Capitalize the first letter of the string so it matches with the Database
-  const capitalize = (word) => {
-    if (typeof word !== "string") return "";
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
+  // const capitalize = (word) => {
+  //   if (typeof word !== "string") return "";
+  //   return word.charAt(0).toUpperCase() + word.slice(1);
+  // };
+
   //
-  //// Setting state to whats entered in input boxes.
+  //
+  //// Setting state to whats entered in input boxes.  Commented out code is what was used when it wasn't being developed to deliver realtime results. Submit Buttons were used(later in code) to filter through businesses and match to each respective state.  Problem was regex was needed to get rid of needing to type in exact names.  I went the direction of realtime results which solved that problem as well.  Plus its just cooler ;)
   const handleTextChange = (evt) => {
     if (evt.target.name === "name") {
       const input = evt.target.value;
-      const cappedInput = capitalize(input);
-      setNameInput(cappedInput);
+      const found = businesses.filter((business) =>
+        business.name.toLowerCase().includes(input.toLowerCase())
+      );
+      setDataPool(found);
+      // const input = evt.target.value;
+      // const cappedInput = capitalize(input);
+      // setNameInput(cappedInput);
     }
     if (evt.target.name === "zip") {
-      setZipInput(evt.target.value);
       const input = evt.target.value;
-      const cappedInput = capitalize(input);
-      setZipInput(cappedInput);
+      const found = businesses.filter((business) =>
+        business.zip.toLowerCase().includes(input.toLowerCase())
+      );
+      setDataPool(found);
+      // const input = evt.target.value;
+      // const cappedInput = capitalize(input);
+      // setZipInput(cappedInput);
     }
     if (evt.target.name === "city") {
-      setCityInput(evt.target.value);
       const input = evt.target.value;
-      const cappedInput = capitalize(input);
-      setCityInput(cappedInput);
+      const found = businesses.filter((business) =>
+        business.city.toLowerCase().includes(input.toLowerCase())
+      );
+      setDataPool(found);
+      // const input = evt.target.value;
+      // const cappedInput = capitalize(input);
+      // setCityInput(cappedInput);
     }
   };
 
@@ -83,8 +98,13 @@ export default function Search() {
   //// submit functions
   const handleNameSearch = (evt) => {
     evt.preventDefault();
-    const found = businesses.filter((business) => business.name === nameInput);
+    const found = businesses.filter((business) =>
+      business.name.toLowerCase().includes(nameInput.toLowerCase())
+    );
     setDataPool(found);
+
+    // const found = businesses.filter((business) => business.name === nameInput);
+    // setDataPool(found);
   };
   const handleZipSearch = (evt) => {
     evt.preventDefault();
@@ -156,6 +176,7 @@ export default function Search() {
           <form className="inputAndButton" onSubmit={handleNameSearch}>
             <TextField
               className="BusinessInput"
+              autoComplete
               onChange={handleTextChange}
               inputRef={textInput1}
               name="name"
@@ -163,7 +184,7 @@ export default function Search() {
               type="text"
               style={{ marginTop: 20 }}
             />
-            <Button
+            {/* <Button
               type="submit"
               className="searchButton"
               variant="contained"
@@ -183,11 +204,12 @@ export default function Search() {
               }}
             >
               Search by Name
-            </Button>
+            </Button> */}
           </form>
           <form className="inputAndButton" onSubmit={handleZipSearch}>
             <TextField
               className="ZipInput"
+              autoComplete
               onChange={handleTextChange}
               inputRef={textInput2}
               name="zip"
@@ -195,7 +217,7 @@ export default function Search() {
               type="text"
               style={{ marginTop: 20 }}
             />
-            <Button
+            {/* <Button
               type="submit"
               className="searchButton"
               variant="contained"
@@ -215,11 +237,12 @@ export default function Search() {
               }}
             >
               Search by Zip
-            </Button>
+            </Button> */}
           </form>
           <form className="inputAndButton" onSubmit={handleCitySearch}>
             <TextField
               className="CityInput"
+              autoComplete
               onChange={handleTextChange}
               inputRef={textInput3}
               name="city"
@@ -227,7 +250,7 @@ export default function Search() {
               type="text"
               style={{ marginTop: 20 }}
             />
-            <Button
+            {/* <Button
               type="submit"
               className="searchButton"
               variant="contained"
@@ -247,8 +270,30 @@ export default function Search() {
               }}
             >
               Search by City
-            </Button>
+            </Button> */}
           </form>
+          <div>
+            <Button
+              className="resetButton"
+              variant="contained"
+              style={{
+                background: "#E84855",
+                color: "#fbf7ef",
+                marginTop: "15px",
+                width: "65%",
+                left: "16%",
+              }}
+              onClick={() => {
+                setTimeout(() => {
+                  textInput1.current.value = "";
+                  textInput2.current.value = "";
+                  textInput3.current.value = "";
+                }, 100);
+              }}
+            >
+              Reset
+            </Button>
+          </div>
         </div>
         <div className="showBusinessAndMap">
           <div className="showBusiness">

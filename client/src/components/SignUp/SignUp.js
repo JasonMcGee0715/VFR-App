@@ -14,19 +14,6 @@ export default function SignUp() {
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const newUser = {
-    firstName: firstName,
-    lastName: lastName,
-    city: city,
-    state: state,
-    county: county,
-    zip: zip,
-    phone: phone,
-    email: email,
-    userName: userName,
-    password: password,
-  };
-
   const handleTextChange = (evt) => {
     if (evt.target.name === "firstName") {
       setFirstName(evt.target.value);
@@ -62,8 +49,32 @@ export default function SignUp() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(newUser);
+
+    (async () => {
+      const rawResponse = await fetch("/users", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+          city: city,
+          state: state,
+          county: county,
+          zip: zip,
+          phone: phone,
+          email: email,
+          userName: userName,
+          password: password,
+        }),
+      });
+      const content = await rawResponse.json();
+      console.log("Response", content);
+    })();
   };
+
   // useEffect(() => {
   //   // console.log(Clear);
   //   console.log(newUser);

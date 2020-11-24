@@ -29,17 +29,11 @@ export default function NewBusiness() {
 
   // useEffect(() => {
   //   console.log(typeof name);
-  // }, []);
-
-  // const newBusiness = {
-  //   name: name,
-  //   address: address,
-  //   city: city,
-  //   state: state,
-  //   zip: zip,
-  //   chain: chain,
-  //   militaryDiscount: militaryDiscount,
-  // };
+  //   console.log(name);
+  //   console.log(address);
+  //   console.log(chain);
+  //   console.log(militaryDiscount);
+  // });
 
   const handleTextChange = (evt) => {
     if (evt.target.name === "name") {
@@ -66,7 +60,6 @@ export default function NewBusiness() {
   };
 
   const handleSubmit = (evt) => {
-    console.log(typeof name);
     evt.preventDefault();
 
     (async () => {
@@ -82,12 +75,12 @@ export default function NewBusiness() {
           city: city,
           state: state,
           zip: zip,
-          county: chain,
-          phone: militaryDiscount,
+          chain: chain,
+          militaryDiscount: militaryDiscount,
         }),
       });
       const content = await rawResponse.json();
-      console.log(content);
+      console.log("Response", content);
     })();
 
     // fetch("/businesses", {
@@ -102,8 +95,8 @@ export default function NewBusiness() {
     //     city: city,
     //     state: state,
     //     zip: zip,
-    //     county: chain,
-    //     phone: militaryDiscount,
+    //     chain: chain,
+    //     militaryDiscount: militaryDiscount,
     //   }),
     // });
   };
@@ -120,7 +113,7 @@ export default function NewBusiness() {
     <div>
       <Container maxWidth="xs" className="newBusinessContainer">
         <form className="newBusinessForm" onSubmit={handleSubmit}>
-          <Typography style={{ marginTop: 15 }}>
+          <Typography style={{ marginTop: 15, fontFamily: "IBM Plex Mono" }}>
             Provide some basic info for our records...
           </Typography>
           <TextField
@@ -183,7 +176,7 @@ export default function NewBusiness() {
             type="text"
             style={{ marginTop: 15 }}
           />
-          <Typography style={{ marginTop: 20 }}>
+          <Typography style={{ marginTop: 20, fontFamily: "IBM Plex Mono" }}>
             And now, for the important part...
           </Typography>
           <TextField
@@ -201,7 +194,11 @@ export default function NewBusiness() {
               type="submit"
               className="createBusiness-button"
               variant="contained"
-              style={{ background: "#E84855", color: "#fbf7ef" }}
+              style={{
+                background: "#E84855",
+                color: "#fbf7ef",
+                fontFamily: "IBM Plex Mono",
+              }}
               onClick={() => {
                 setTimeout(() => {
                   textInput1.current.value = "";
@@ -214,7 +211,7 @@ export default function NewBusiness() {
                 }, 100);
               }}
             >
-              Create New User
+              Add Business
             </Button>
           </div>
         </form>

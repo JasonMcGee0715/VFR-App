@@ -13,7 +13,7 @@ export default function Map({ lat, lng }) {
   //   const [selectedBusiness, setSelectedBusiness] = React.useState(null);
 
   const mapStyles = {
-    height: "52vh",
+    height: "51.5vh",
     width: "90%",
   };
   const defaultCenter = {

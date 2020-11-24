@@ -4,6 +4,7 @@
 .newBusinessForm {
   display: flex;
   flex-direction: column;
+  font-family: "IBM Plex Mono";
 }
 .newBusinessButton {
   padding-top: 20px;
