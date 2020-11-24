@@ -176,7 +176,8 @@ export default function Search() {
           <form className="inputAndButton" onSubmit={handleNameSearch}>
             <TextField
               className="BusinessInput"
-              autoComplete
+              variant="outlined"
+              // autoComplete
               onChange={handleTextChange}
               inputRef={textInput1}
               name="name"
@@ -209,7 +210,8 @@ export default function Search() {
           <form className="inputAndButton" onSubmit={handleZipSearch}>
             <TextField
               className="ZipInput"
-              autoComplete
+              // autoComplete
+              variant="outlined"
               onChange={handleTextChange}
               inputRef={textInput2}
               name="zip"
@@ -242,7 +244,8 @@ export default function Search() {
           <form className="inputAndButton" onSubmit={handleCitySearch}>
             <TextField
               className="CityInput"
-              autoComplete
+              // autoComplete
+              variant="outlined"
               onChange={handleTextChange}
               inputRef={textInput3}
               name="city"

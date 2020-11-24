@@ -117,7 +117,12 @@ const create = (req, res) => {
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
-    return res.json({ newId: results.insertId });
+    return res.json({
+      newId: results.insertId,
+      name,
+      chain,
+      militaryDiscount,
+    });
   });
 };
 
