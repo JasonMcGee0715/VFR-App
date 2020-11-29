@@ -119,9 +119,6 @@ const create = (req, res) => {
     if (err) return handleSQLError(res, err);
     return res.json({
       newId: results.insertId,
-      name,
-      chain,
-      militaryDiscount,
     });
   });
 };

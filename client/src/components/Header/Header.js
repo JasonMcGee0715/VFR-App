@@ -51,7 +51,7 @@ export default function Header() {
                   window.location.replace("/login");
                 }}
               >
-                Logout
+                <Link to="/login">Login</Link>
               </li>
             ) : (
               <li>
