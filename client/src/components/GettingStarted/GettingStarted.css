@@ -2,7 +2,7 @@
   padding: 0px 150px;
   display: grid;
   grid-template-columns: 47.5% 5% 47.5%;
-  padding-top: 45px;
+  padding-top: 38px;
 }
 .imgContainer {
   grid-column: 0 / 1;
