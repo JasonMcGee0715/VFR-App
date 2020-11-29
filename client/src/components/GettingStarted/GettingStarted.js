@@ -39,7 +39,8 @@ export default function GettingStarted() {
             Weeble!{" "}
           </span>
           An app created to help bridge the gap between Veterans / First
-          Responders and their potential discounts.
+          Responders and their potential discounts. Know beforehand who offers
+          what and let others know at the same time!
         </span>
         <br />
         <br />
