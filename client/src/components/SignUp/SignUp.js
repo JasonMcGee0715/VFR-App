@@ -200,7 +200,11 @@ export default function SignUp() {
               type="submit"
               className="createUser-button"
               variant="contained"
-              style={{ background: "#E84855", color: "whitesmoke" }}
+              style={{
+                background: "#E84855",
+                color: "whitesmoke",
+                fontFamily: "IBM Plex Mono",
+              }}
               onClick={() => {
                 setTimeout(() => {
                   textInput1.current.value = "";

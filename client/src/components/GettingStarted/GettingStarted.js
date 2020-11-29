@@ -69,7 +69,11 @@ export default function GettingStarted() {
             type="submit"
             className="intro-button"
             variant="contained"
-            style={{ background: "#E84855", color: "#fbf7ef" }}
+            style={{
+              background: "#E84855",
+              color: "#fbf7ef",
+              fontFamily: "IBM Plex Mono",
+            }}
           >
             <Link to="/login">Login</Link>
           </Button>
@@ -77,7 +81,11 @@ export default function GettingStarted() {
             type="submit"
             className="intro-button"
             variant="contained"
-            style={{ background: "#E84855", color: "#fbf7ef" }}
+            style={{
+              background: "#E84855",
+              color: "#fbf7ef",
+              fontFamily: "IBM Plex Mono",
+            }}
           >
             <Link to="/signUp">Sign up</Link>
           </Button>

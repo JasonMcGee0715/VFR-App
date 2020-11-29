@@ -285,6 +285,7 @@ export default function Search() {
                 marginTop: "15px",
                 width: "65%",
                 left: "16%",
+                fontFamily: "IBM Plex Mono",
               }}
               onClick={() => {
                 setTimeout(() => {

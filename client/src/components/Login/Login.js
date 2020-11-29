@@ -58,7 +58,11 @@ export default function Login() {
               type="submit"
               className="login-button"
               variant="contained"
-              style={{ background: "#E84855", color: "#fbf7ef" }}
+              style={{
+                background: "#E84855",
+                color: "#fbf7ef",
+                fontFamily: "IBM Plex Mono",
+              }}
               // onClick={usersLog}
             >
               Login
@@ -67,7 +71,11 @@ export default function Login() {
               type="submit"
               className="login-button"
               variant="contained"
-              style={{ background: "#E84855", color: "#fbf7ef" }}
+              style={{
+                background: "#E84855",
+                color: "#fbf7ef",
+                fontFamily: "IBM Plex Mono",
+              }}
             >
               <Link to="/signUp">Signup</Link>
             </Button>
