@@ -24,17 +24,21 @@ export default function GettingStarted() {
 
       <div className="intro">
         <span>
-          Every Veteran or First Responder has gone through the interaction of
+          Every Veteran or First Responder has gone through the interactions of
           trying to find out if an establishment offers discounts to you.
           Sometimes these efforts can be a real pain if the person on the other
-          side of the counter has to start searching for answers.
+          side of the counter has to start searching for answers. Some people
+          would rather not ask, because that's not their personality.
         </span>
         <br />
         <br />
         <span>
-          Intoducing{" "}
-          <span style={{ color: "#49a4d1", fontWeight: "bold" }}>Weeble!</span>{" "}
-          An app created to help bridge the gap between Veterans and First
+          Introducing
+          <span style={{ color: "#49a4d1", fontWeight: "bold" }}>
+            {" "}
+            Weeble!{" "}
+          </span>
+          An app created to help bridge the gap between Veterans / First
           Responders and their potential discounts.
         </span>
         <br />
@@ -54,6 +58,12 @@ export default function GettingStarted() {
             show up...Add it!
           </li>
         </ul>
+        <br />
+        <span>
+          Lets look after one another and help each other save. You never know
+          what someone is going through...a few extra bucks can make a
+          difference.
+        </span>
         <div className="intro-buttons">
           <Button
             type="submit"

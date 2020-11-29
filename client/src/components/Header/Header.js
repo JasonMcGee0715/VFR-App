@@ -48,10 +48,10 @@ export default function Header() {
               <li
                 onClick={() => {
                   document.cookie = "loggedIn=";
-                  window.location.replace("/login");
+                  // window.location.replace("/login");
                 }}
               >
-                <Link to="/login">Login</Link>
+                <Link to="/login">Logout</Link>
               </li>
             ) : (
               <li>
