@@ -10,4 +10,4 @@ Veterans and First Responders (VFR) app that finds local establishments that off
 
 ## See it Work
 
-![](https://www.loom.com/share/f85e2d5192624545b543fa6f378dabfc)
+![](https://www.loom.com/share/f85e2d5192624545b543fa6f378dabfc.gif)
