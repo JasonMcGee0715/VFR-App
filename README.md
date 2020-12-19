@@ -1,25 +1,13 @@
 # VFR-App
 
-Veterans and First Responders app that finds local establishments that offer discounts.
+Veterans and First Responders (VFR) app that finds local establishments that offer discounts. App uses crowd-sourcing to fill the database with the most accurate information available.
 
 ## App Functionality
 
-1. Login Page
-2. Dashboard Page
-   - NavBar with with app emblem, username and to the right side links for (Getting Started, Locations Near Me, Add Business).
-   - Getting Started Component that goes over the the targeted users as well as the general reason for the app. Simple walkthrough for using the app.
-   - Locations Component will offer a way to input city and state and will render up results for establishments in that location that offer discounts as well as how much the discount is.
-   - Add Business Component will give user the ability to add a business to database. When adding business the user will need to give the needed information:
-     - Name
-     - Address
-     - City
-     - State
-     - Zip
-     - Chain (Yes or No)
-     - Military Discount
+1. User has the ability to Search the data base by city, zip, or by business name to filter out businesses that offer discounts to VFR's.
+2. If user visits a place that he/she knows is not included in the database, then they have the ability to add that establishment.
+3. All businesses will show on a mini-map in the Search component.
 
-## Needed MySql functions
+## See it Work
 
-1. Should be able to create a user.
-2. Should be able to add a business with needed info (see above).
-3. Should be able to search for a business by name, city, state, or zip
+![](https://www.loom.com/share/f85e2d5192624545b543fa6f378dabfc)
