@@ -7,10 +7,10 @@ class Connection {
       console.log("creating connection...");
       this.pool = mysql.createPool({
         connectionLimit: 100,
-        host: "35.225.211.211",
-        user: "root",
+        host: "den1.mysql2.gear.host",
+        user: "vfrapp",
         password: process.env.DB_password,
-        database: "capstone_db",
+        database: "vfrapp",
       });
 
       return this.pool;
