@@ -12,6 +12,6 @@ Veterans and First Responders (VFR) app that finds local establishments that off
 
 [By clicking me](https://weeble-app.herokuapp.com/)
 
-![](VFR-Demo — Watch Video
+![](https://cdn.loom.com/sessions/thumbnails/f85e2d5192624545b543fa6f378dabfc-with-play.gif)
 
-)
+<!-- <a href="https://www.loom.com/share/f85e2d5192624545b543fa6f378dabfc"> <p>VFR-Demo - Watch Video</p> <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/f85e2d5192624545b543fa6f378dabfc-with-play.gif"> </a> -->
